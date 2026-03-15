@@ -33,26 +33,26 @@ extension View {
     }
 }
 
-struct ShimmerCardView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(.systemGray5))
-                .aspectRatio(9/16, contentMode: .fit)
-                .shimmer()
-
-            RoundedRectangle(cornerRadius: 4)
-                .fill(Color(.systemGray5))
-                .frame(height: 10)
-                .shimmer()
-
-            RoundedRectangle(cornerRadius: 4)
-                .fill(Color(.systemGray5))
-                .frame(width: 50, height: 8)
-                .shimmer()
-        }
-    }
-}
+//struct ShimmerCardView: View {
+//    var body: some View {
+//        VStack(alignment: .leading, spacing: 6) {
+//            RoundedRectangle(cornerRadius: 12)
+//                .fill(Color(.systemGray5))
+//                .aspectRatio(9/16, contentMode: .fit)
+//                .shimmer()
+//
+//            RoundedRectangle(cornerRadius: 4)
+//                .fill(Color(.systemGray5))
+//                .frame(height: 10)
+//                .shimmer()
+//
+//            RoundedRectangle(cornerRadius: 4)
+//                .fill(Color(.systemGray5))
+//                .frame(width: 50, height: 8)
+//                .shimmer()
+//        }
+//    }
+//}
 
 struct ShimmerGridView: View {
     let colWidth: CGFloat
@@ -76,6 +76,7 @@ struct ShimmerGridView: View {
         .padding(.horizontal, spacing)
     }
 
+    /// Skeleton during intitial load. Random values to make it look good.
     private func shimmerHeight(col: Int, row: Int) -> CGFloat {
         let heights: [[CGFloat]] = [
             [90, 130, 80, 110, 95, 120],

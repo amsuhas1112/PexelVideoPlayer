@@ -32,8 +32,8 @@ final class VideoListViewModel {
     private let prefetchOffset = 5
     private let service: PexelsAPIServiceProtocol
 
-    init(service: PexelsAPIServiceProtocol = PexelsAPIService.shared) {
-        self.service = service
+    init(service: PexelsAPIServiceProtocol? = nil) {
+        self.service = service ?? PexelsAPIService.shared
     }
 
     // MARK: - Public

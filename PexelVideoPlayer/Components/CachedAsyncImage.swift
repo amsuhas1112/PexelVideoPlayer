@@ -54,7 +54,7 @@ struct CachedAsyncImage<Content: View, Placeholder: View>: View {
             guard let (data, _) = try? await URLSession.shared.data(from: target),
                   !Task.isCancelled,
                   let img = UIImage(data: data) else { return }
-            ImageCache.shared.store(img, for: target)
+            await ImageCache.shared.store(img, for: target)
             await MainActor.run {
                 guard !Task.isCancelled else { return }
                 uiImage = img

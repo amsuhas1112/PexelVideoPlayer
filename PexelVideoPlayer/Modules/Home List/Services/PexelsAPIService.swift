@@ -17,7 +17,7 @@ struct PexelsAPIService: PexelsAPIServiceProtocol {
     private let popularURL = "https://api.pexels.com/videos/popular"
     private let searchURL  = "https://api.pexels.com/videos/search"
 
-    init(
+    private init(
         client: NetworkClientProtocol = NetworkClient.shared,
         apiKey: String = "M80Auk9SXktZ1Hyw0X4cbnfbV5WddejHFZ9c1YrLMPDJtLitu7VKIDTs"
     ) {
@@ -30,7 +30,7 @@ struct PexelsAPIService: PexelsAPIServiceProtocol {
             URLQueryItem(name: "page",     value: "\(page)"),
             URLQueryItem(name: "per_page", value: "\(perPage)")
         ])
-        return try await client.fetch(PexelsResponse.self, request: authorised(url))
+        return try await client.fetch(request: authorised(url))
     }
 
     func searchVideos(query: String, page: Int, perPage: Int = 15) async throws -> PexelsResponse {
@@ -39,7 +39,7 @@ struct PexelsAPIService: PexelsAPIServiceProtocol {
             URLQueryItem(name: "page",     value: "\(page)"),
             URLQueryItem(name: "per_page", value: "\(perPage)")
         ])
-        return try await client.fetch(PexelsResponse.self, request: authorised(url))
+        return try await client.fetch(request: authorised(url))
     }
 
     // MARK: - Helpers

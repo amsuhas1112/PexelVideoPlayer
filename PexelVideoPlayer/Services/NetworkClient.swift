@@ -24,7 +24,6 @@ enum NetworkError: LocalizedError, Equatable {
 
 protocol NetworkClientProtocol {
     func fetch<T: Decodable>(
-        _ type: T.Type,
         request: URLRequest
     ) async throws -> T
 }
@@ -43,7 +42,6 @@ struct NetworkClient: NetworkClientProtocol {
     }
 
     func fetch<T: Decodable>(
-        _ type: T.Type,
         request: URLRequest
     ) async throws -> T {
         let data: Data

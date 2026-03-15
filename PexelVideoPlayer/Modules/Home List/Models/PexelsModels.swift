@@ -30,23 +30,22 @@ struct PexelsVideo: Codable, Identifiable, Equatable {
         return m > 0 ? "\(m):\(String(format: "%02d", s))" : "0:\(String(format: "%02d", s))"
     }
 
-    /// Actual pixel aspect ratio clamped to reasonable bounds.
     var pixelAspectRatio: CGFloat {
         return CGFloat(width) / CGFloat(height)
 //        guard height > 0 else { return 16 / 9 }
 //        return max(min(CGFloat(width) / CGFloat(height), 2.5), 0.4)
     }
 
-    /// Best HD/SD URL, prefers HD ~720p to balance quality vs bandwidth.
-    var bestVideoURL: URL? {
-        let mp4 = videoFiles.filter { $0.fileType == "video/mp4" }
-        // Pick highest quality HD ≤ 1080p wide, fall back to any
-        let preferred = mp4.filter { $0.quality == "hd" }.max(by: { $0.width < $1.width })
-            ?? mp4.filter { $0.quality == "sd" }.max(by: { $0.width < $1.width })
-            ?? mp4.first
-        guard let link = preferred?.link else { return nil }
-        return URL(string: link)
-    }
+//    /// Best HD/SD URL, prefers HD ~720p to balance quality vs bandwidth.
+//    var bestVideoURL: URL? {
+//        let mp4 = videoFiles.filter { $0.fileType == "video/mp4" }
+//        // Pick highest quality HD ≤ 1080p wide, fall back to any
+//        let preferred = mp4.filter { $0.quality == "hd" }.max(by: { $0.width < $1.width })
+//            ?? mp4.filter { $0.quality == "sd" }.max(by: { $0.width < $1.width })
+//            ?? mp4.first
+//        guard let link = preferred?.link else { return nil }
+//        return URL(string: link)
+//    }
 }
 
 // MARK: - User
@@ -69,3 +68,4 @@ struct PexelsVideoFile: Codable {
     let link: String
     let size: Int?
 }
+

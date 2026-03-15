@@ -3,8 +3,6 @@ import SwiftUI
 /// Pinterest-style masonry grid.
 /// Column distribution is computed once from the item list (O(n)) and cached
 /// by identity — SwiftUI never re-measures cells during scrolling.
-/// The caller MUST supply a fixed `columnWidth` derived from geometry OUTSIDE
-/// the ScrollView so no GeometryReader lives inside the scroll tree.
 struct MasonryGrid<Item: Identifiable & Equatable, Cell: View>: View {
     let items: [Item]
     let columns: Int
